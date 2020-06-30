@@ -22,7 +22,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                               ├────────┼────────┼────────┼────────┼────────┼────────┤
 KC_LCTL, LT(1,KC_A), LT(2,KC_S), LT(3,KC_D), LT(4,KC_F), KC_G,                          KC_H, KC_J, LT(3,KC_K), LT(2,KC_L), LT(1,KC_SCLN), KC_QUOT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐             ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,  MEH(KC_NO),             LCTL(LALT(RSFT(KC_F))), KC_N,  KC_M,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,  KC_MUTE,               LCTL(LALT(RSFT(KC_F))), KC_N,  KC_M,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘             └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     KC_LGUI, LOWER,   KC_ENT,                         KC_SPC,  RAISE,   KC_RALT
                                 // └────────┴────────┴────────┘                      └────────┴────────┴────────┘
@@ -116,16 +116,16 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         switch (biton32(layer_state)) {
             case 1:
                 if (clockwise) {
-                    tap_code(KC_VOLU);
+                    tap_code(KC_BRMU);
                 } else {
-                    tap_code(KC_VOLD);
+                    tap_code(KC_BRMD);
                 }
                 break;
             default:
                 if (clockwise) {
-                    tap_code(KC_UP);
+                    tap_code(KC_VOLU);
                 } else {
-                    tap_code(KC_DOWN);
+                    tap_code(KC_VOLD);
                 }
                 break;
         }
