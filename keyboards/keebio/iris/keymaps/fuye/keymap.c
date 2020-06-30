@@ -1,9 +1,20 @@
 #include QMK_KEYBOARD_H
 
+// Layer definitions
 #define _QWERTY 0
 #define _LOWER 1
 #define _RAISE 2
 #define _ADJUST 3
+
+// Custom keycode definitions
+#define MAXWIN LCTL(LALT(RSFT(KC_F)))
+#define L1A LT(1,KC_A)
+#define L2S LT(2,KC_S)
+#define L3D LT(3,KC_D)
+#define L3K LT(3,KC_K)
+#define L2L LT(2,KC_L)
+#define L1SCLN LT(1,KC_SCLN)
+#define UNDSC RSFT(KC_MINS)
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
@@ -20,9 +31,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                               ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                               ├────────┼────────┼────────┼────────┼────────┼────────┤
-KC_LCTL, LT(1,KC_A), LT(2,KC_S), LT(3,KC_D), LT(4,KC_F), KC_G,                          KC_H, KC_J, LT(3,KC_K), LT(2,KC_L), LT(1,KC_SCLN), KC_QUOT,
+     KC_LCTL,  L1A,    L2S,     L3D,      KC_F,     KC_G,                                  KC_H,    KC_J,    L3K,     L2L,      L1SCLN,  KC_QUOT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐             ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,  KC_MUTE,               LCTL(LALT(RSFT(KC_F))), KC_N,  KC_M,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+     KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_MUTE,                MAXWIN, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘             └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     KC_LGUI, LOWER,   KC_ENT,                         KC_SPC,  RAISE,   KC_RALT
                                 // └────────┴────────┴────────┘                      └────────┴────────┴────────┘
@@ -38,7 +49,7 @@ KC_LCTL, LT(1,KC_A), LT(2,KC_S), LT(3,KC_D), LT(4,KC_F), KC_G,                  
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      _______, _______, _______, _______, KC_DOWN, KC_LCBR, KC_LPRN,          KC_RPRN, KC_RCBR, KC_P1,   KC_P2,   KC_P3,   KC_MINS, KC_END,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    _______, _______, KC_CAPS,               RSFT(KC_MINS),  _______, KC_P0
+                                    _______, _______, KC_CAPS,                    UNDSC,  _______, KC_P0
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
